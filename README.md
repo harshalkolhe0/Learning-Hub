@@ -39,7 +39,7 @@ Trainer includes trainee feature and can modify,create,delete his own trainings.
 
 Admin includes trainee feature and can modify,create,delete any trainings.
 
-<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TrainerPage.png?raw=true" width="700"  height = "400">
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/AdminPage.png?raw=true" width="700"  height = "400">
 
 Admin feature also include add/update/delete users.
 
