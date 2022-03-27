@@ -8,15 +8,14 @@ This is ASP .NET Core MVC based web application. In this application user can en
 For authentication purpose, token based authentication is used. Role of admin user is provided through which admin can add/delete/update users or trainings. MS SQL database is used. Api is used to fetch/update data from database.     
 
 
-# Pages
+## Pages
 
-## Login Page
+#### Login Page
 
 Single login page for all users(trainer,trainee,admin). Each user has different level of authorization. Trainee can only enroll/disenroll for trainings. Trainer and add/update/remove his own trainings. Admins can add/update/remove trainers or trainee or training.
 
 **Workflow:** After user submits its credentials an api is called to send credentials. Credentials is verified at backend and if user is found it returns a token. This token is used internally for any subsequent request made by user. 
 
-## Dashboard Page
 
 #### Trainee Dashboard Page
 
@@ -24,9 +23,31 @@ Trainee can see ongoing trainings in tabular as well as calender format. Trainee
 
 <img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TraineePage.png?raw=true" width="700"  height = "400">
 
+When Trainee click on enroll button, a toast is appear on top right corner which shows successfullly enrolled and enroll button changes to disenroll. 
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/Enroll.png?raw=true" width="700"  height = "400">
 
 #### Trainer Dashboard Page
+
+Trainer includes trainee feature and can modify,create,delete his own trainings.
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TrainerPage.png?raw=true" width="700"  height = "400">
 
 
 
 #### Admin Dashboard Page
+
+Admin includes trainee feature and can modify,create,delete any trainings.
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TrainerPage.png?raw=true" width="700"  height = "400">
+
+Admin feature also include add/update/delete users.
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/UserView.png?raw=true" width="700"  height = "400">
+
+
+##Api
+
+Api is secured with token based authentication. Without authentication it shows unauthorized:
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/Api.png?raw=true" width="700"  height = "400">
