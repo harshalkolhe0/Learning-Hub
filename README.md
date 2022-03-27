@@ -22,7 +22,7 @@ Single login page for all users(trainer,trainee,admin). Each user has different 
 
 Trainee can see ongoing trainings in tabular as well as calender format. Trainee can enroll/disenroll for trainings.
 
-<img src="https://github.com/harshalkolhe0/Learning-Hub/Images/blob/main/TraineePage.png?raw=true" width="700"  height = "400">
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TraineePage.png?raw=true" width="700"  height = "400">
 
 
 #### Trainer Dashboard Page
