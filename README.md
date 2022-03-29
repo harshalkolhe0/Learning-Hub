@@ -33,7 +33,33 @@ Trainer includes trainee feature and can modify,create,delete his own trainings.
 
 <img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/TrainerPage.png?raw=true" width="700"  height = "400">
 
+If trainer click on add a course button then below page appears with current date and time:
 
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CourseUpdatedView.png?raw=true" width="700"  height = "400">
+
+If trainer click on edit button the below page appears:
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CreateView.png?raw=true" width="700"  height = "400">
+
+After Saving update the toast appear at top left corner.
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CourseUpdatedView.png?raw=true" width="700"  height = "400">
+
+In calender view, trainer click on his training below page appears:
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/SelfTrainings.png?raw=true" width="700"  height = "400">
+
+On clicking Edit below page appears:
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CalenderSaveView.png?raw=true" width="700"  height = "400">
+
+On saving is shows:
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CalenderUpdatedView.png?raw=true" width="700"  height = "400">
+
+If trainer opens a training which he doesn't own then it shows :
+
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/OthersTrainers.png?raw=true" width="700"  height = "400">
 
 #### Admin Dashboard Page
 
@@ -46,7 +72,7 @@ Admin feature also include add/update/delete users.
 <img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/UserView.png?raw=true" width="700"  height = "400">
 
 
-##Api
+## Api
 
 Api is secured with token based authentication. Without authentication it shows unauthorized:
 
