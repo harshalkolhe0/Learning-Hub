@@ -59,7 +59,7 @@ On saving is shows:
 
 If trainer opens a training which he doesn't own then it shows :
 
-<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/OthersTrainers.png?raw=true" width="700"  height = "400">
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/OthersTrainings.png?raw=true" width="700"  height = "400">
 
 #### Admin Dashboard Page
 
