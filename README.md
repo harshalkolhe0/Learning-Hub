@@ -35,11 +35,11 @@ Trainer includes trainee feature and can modify,create,delete his own trainings.
 
 If trainer click on add a course button then below page appears with current date and time:
 
-<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CourseUpdatedView.png?raw=true" width="700"  height = "400">
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CreateView.png?raw=true" width="700"  height = "400">
 
 If trainer click on edit button the below page appears:
 
-<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CreateView.png?raw=true" width="700"  height = "400">
+<img src="https://github.com/harshalkolhe0/Learning-Hub/blob/main/Images/CourseUpdatePage.png?raw=true" width="700"  height = "400">
 
 After Saving update the toast appear at top left corner.
 
