@@ -1,0 +1,33 @@
+﻿@model LearningHubMVC.Models.LoginUser
+@{
+    ViewData["Title"] = "Login Page";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form class="form-horizontal" asp-action="TryLogin">
+                <div class="form-group">
+                   <label class="control-label">User ID</label>
+                    <input asp-for="username"  class="form-control"type="text" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input asp-for="password" class="form-control" type="password" />
+                </div>
+                <div class="form-group">
+                   <input type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+@{
+    if (TempData["msg"]!=null)
+    {
+        <script>
+            alert('@TempData["msg"]')
+        </script>
+    }
+}

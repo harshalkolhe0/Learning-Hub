@@ -1,0 +1,474 @@
+﻿    @{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+}
+    <br />
+    <br />
+    
+    <!--
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" integrity="sha512-KXkS7cFeWpYwcoXxyfOumLyRGXMp7BTMTjwrgjMg0+hls4thG2JGzRgQtRfnAuKTn2KWTDZX4UdPg+xTs8k80Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.print.min.css" integrity="sha512-5tgjCXQWNEEUuHZYYhokrbmmcQe6v4cbsb5dhyFwuUOOKtJglWo8046a4nDoxJlazTma4qNAM6+ZYZA7yjgZKw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    -->
+    
+    
+    <div id="calender">
+
+    </div>
+     
+    <div id="myModalown" class="modal fade" role="dialog">
+        
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<button type="button" class="close" data-bs-dismiss="modal">×</button>-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <button id="btnDelete" class="btn btn-outline-primary btn-sm pull-right">
+                        <span class="glyphicon glyphicon-remove"></span> Remove
+                    </button>
+                    <button id="btnEdit" class="btn btn-outline-primary btn-sm pull-right" style="margin-right:5px;">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <p id="pDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<button type="button" class="close" data-bs-dismiss="modal">×</button>-->
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <!--
+                         <button id="btnDelete" class="btn btn-outline-primary btn-sm pull-right">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button>
+                        <button id="btnEdit" class="btn btn-outline-primary btn-sm pull-right" style="margin-right:5px;">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                    -->
+                    <p id="pDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+     
+    <div id="myModalSave" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<button type="button" class="close" data-bs-dismiss="modal">&times;</button>-->
+                    <h4 class="modal-title">Save Event</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <input type="hidden" id="hdEventID" value="0" />
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" id="txtSubject" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Start</label>
+                            <div class="input-group date" id="dtp1">
+                                <input type="text" id="txtStart" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <!--
+                             <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                                </div>
+                            </div>
+                        -->
+                       
+                        <div class="form-group" >
+                            <label>End</label>
+                            <div class="input-group date" id="dtp2">
+                                <input type="text" id="txtEnd" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <!--
+                             <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="txtDescription" rows="3" class="form-control"></textarea>
+                            </div>
+                        -->
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input id="txtduration" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Info</label>
+                            <textarea id="txtInfo" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button type="button" id="btnSave" class="btn btn-outline-success">Save</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    
+    @section Scripts{
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+        
+        
+        <!--
+        <script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js" integrity="sha512-o0rWIsZigOfRAgBxl4puyd0t6YKzeAw9em/29Ag7lhCQfaaua/mDwnpE2PVzwqJ08N7/wqrgdjc2E0mwdSY2Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        -->
+        <script>
+            $(document).ready(function () {
+                var events = [];
+                var selectedEvent = null;
+                FetchEventAndRenderCalendar();
+                ///Courses/GetCoursesJ
+                /*
+                function addtoast(msg)
+                {
+                    //alert("In toast");
+                    let $k=$('<div/>');
+                    $k.append('<p/>').html(msg);
+                    $('#toastbody').empty().html($k);
+                    $("#liveToast").toast("show",{delay: 3000});
+                }
+                */
+                function FetchEventAndRenderCalendar() {
+                    events = [];
+                    //alert("In Event Fetching");
+                    $.ajax({
+                        type: "GET",
+                        url: "/Courses/GetPresentCourses",
+                        contentType: "JSON",
+                        success: function (data) {
+                            $.each(data, function (i, v) {
+                                events.push({
+                                    
+                                    eventID: v.id,
+                                    title: v.name,
+                                    duration: v.duration,
+                                    info: v.info,
+                                    start: moment(v.startdate),
+                                    end: moment(v.enddate),
+                                    own: v.istrainer
+                                    //color: v.ThemeColor,
+                                    //allDay: v.IsFullDay
+                                });
+                            })
+     
+                            GenerateCalender(events);
+                        },
+                        error: function (error) {
+                            alert('failed fetching');
+                        }
+                    })
+                }
+     
+                function GenerateCalender(events) {
+                    $('#calender').fullCalendar('destroy');
+                    $('#calender').fullCalendar({
+                        contentHeight: 400,
+                        defaultDate: new Date(),
+                        timeFormat: 'h(:mm)a',
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay,agenda'
+                        },
+                        eventLimit: true,
+                        eventColor: '#378006',
+                        events: events,
+                        eventClick: function (calEvent) {
+                            //alert("In Event Clicked "+calEvent.eventID+","+calEvent.title+","+calEvent.start+","+calEvent.end+","+calEvent.duration);
+                            selectedEvent = calEvent;
+                            
+                            //var $tp=$('<div/>');
+                            //$tp.append('<p/>').html(calEvent.title +","+ calEvent.start +","+ calEvent.end +","+ calEvent.duration);
+                            //$('#tp').empty().html($tp);
+
+                            
+                           
+                            var $description = $('<div/>');
+                            $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                            //if (calEvent.end != null) {
+                            $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                            //}
+                            $description.append($('<p/>').html('<b>Duration:</b>' + calEvent.duration));
+                            $description.append($('<p/>').html('<b>Info:</b>' + calEvent.info));
+                            
+                            //change here
+                            if(calEvent.own==true)
+                            {
+                                $('#myModalown #eventTitle').text(calEvent.title);
+                                /*
+                                var $description = $('<div/>');
+                                $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm a")));
+                                //if (calEvent.end != null) {
+                                    $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
+                                //}
+                                $description.append($('<p/>').html('<b>Duration:</b>' + calEvent.duration));
+                                $description.append($('<p/>').html('<b>Info:</b>' + calEvent.info));
+                                */
+                                $('#myModalown #pDetails').empty().html($description);
+                            
+                                $('#myModalown').modal('show');
+                            }
+                                
+                            else 
+                            {
+                                $('#myModal #eventTitle').text(calEvent.title);
+                                $('#myModal #pDetails').empty().html($description);
+                                $('#myModal').modal('show');
+                            }
+                        },
+                        selectable: true,
+                        select: function (start, end) {
+                            //alert("In select event");
+                            selectedEvent = {
+                                eventID: 0,
+                                title: '',
+                                start: start,
+                                end: end,
+                                info :'',
+                                duration: 0
+                                //allDay: false,
+                                //color: ''
+                            };
+                            openAddEditForm();
+                            $('#calendar').fullCalendar('unselect');
+                        },
+                        editable: true,
+                        eventDrop: function (event) {
+                            var data = {
+                                EventID: event.eventID,
+                                Subject: event.title,
+                                Start: event.start.format('DD/MM/YYYY HH:mm A'),
+                                End: event.end.format('DD/MM/YYYY HH:mm A'),//take care of null!
+                                Info: event.info,
+                                Duration: event.duration
+                                //ThemeColor: event.color,
+                                //IsFullDay: event.allDay
+                            };
+                            SaveEvent(data);
+                        }
+                    })
+                }
+     
+                $('#btnEdit').click(function () {
+                    //Open modal dialog for edit event
+                    openAddEditForm();
+                })
+                
+                $('#btnDelete').click(function () {
+                    if (selectedEvent != null && confirm('Are you sure?')) {
+                        $.ajax({
+                            type: "POST",
+                            url: '/Courses/Delete2',//+selectedEvent.eventID,//'https://localhost:7203/api/Courses/',
+                            data: {'ID': selectedEvent.eventID},
+                            success: function (data) {
+                                //alert(data.title);
+                                if (data.status) {
+                                    //Refresh the calender
+                                    //FetchEventAndRenderCalendar();
+                                    //$('#myModal').modal('hide');
+                                }
+                                addtoast("Course Deleted Succesfully");
+                                FetchEventAndRenderCalendar();
+                                $('#myModal').modal('hide');
+                            },
+                            error: function () {
+                                alert('Failed delete');
+                            }
+                        })
+                    }
+                })
+                $('#dtp1,#dtp2').datetimepicker({
+                    format: 'DD/MM/YYYY HH:mm A'
+                });
+                $('#chkIsFullDay').change(function () {
+                    if ($(this).is(':checked')) {
+                        $('#divEndDate').hide();
+                    }
+                    else {
+                        $('#divEndDate').show();
+                    }
+                });
+                
+                function openAddEditForm() {
+                    if (selectedEvent != null) {
+                        //alert("In add Edit form");
+                        $('#hdEventID').val(selectedEvent.eventID);
+                        $('#txtSubject').val(selectedEvent.title);
+                        $('#txtStart').val(selectedEvent.start.format('DD/MM/YYYY HH:mm A'));
+                        //$('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+                        //$('#chkIsFullDay').change();
+                        $('#txtEnd').val(selectedEvent.end.format('DD/MM/YYYY HH:mm A'));
+                        $('#txtduration').val(selectedEvent.duration);
+                        $('#txtInfo').val(selectedEvent.info);//------------------------------
+                        //$('#ddThemeColor').val(selectedEvent.color);
+                    }
+                    //else alert("Event is null");
+                    $('#myModal').modal('hide');
+                    $('#myModalSave').modal('show');
+                }
+                
+                $('#btnSave').click(function () {
+                    //Validation/
+                    if ($('#txtSubject').val().trim() == "") {
+                        alert('Subject required');
+                        return;
+                    }
+                    if ($('#txtStart').val().trim() == "") {
+                        alert('Start date required');
+                        return;
+                    }
+                    if ($('#txtEnd').val().trim() == "") {
+                        alert('End date required');
+                        return;
+                    }
+                    if ($('#txtduration').val().trim() == "") {
+                        alert('Duration required');
+                        return;
+                    }
+                    if(isNaN($('#txtduration').val().trim()))
+                    {
+                        alert('Duration must be number');
+                        return;
+                    }
+                    var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
+                    var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
+                    if (startDate > endDate) {
+                        alert('Invalid end date');
+                        return;
+                    }
+                    
+                    //if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "") {
+                    //    alert('End date required');
+                    //    return;
+                    //}
+                    //else {
+                    //    var startDate = moment($('#txtStart').val(), "DD/MM/YYYY HH:mm A").toDate();
+                    //    var endDate = moment($('#txtEnd').val(), "DD/MM/YYYY HH:mm A").toDate();
+                    //    if (startDate > endDate) {
+                    //        alert('Invalid end date');
+                    //        return;
+                    //    }
+                    //}
+
+                    //Set p=new Set();
+                    //p=null;
+
+                    var data = {
+                        ID: $('#hdEventID').val(),
+                        Name: $('#txtSubject').val().trim(),
+                        startdate: $('#txtStart').val().trim(),
+                        
+                        //startdate: moment($('#txtStart').val().trim(), "DD/MM/YYYY HH:mm A").format('DD/MM/YYYY HH:mm:SS'),
+                        enddate: $('#txtEnd').val().trim(),
+                        duration: parseFloat($('#txtduration').val().trim()),
+                        info: $('#txtInfo').val().trim(),
+                        Enrollments : null 
+                        //ThemeColor: $('#ddThemeColor').val(),
+                        //IsFullDay: $('#chkIsFullDay').is(':checked')
+                    }
+                    if ($('#hdEventID').val() == 0) {
+                    AddEvent(data)
+                    }
+                    else {
+                        SaveEvent(data);
+                    }
+                    // call function for submit data to the server 
+                })
+                function AddEvent(data) {
+                    //alert("In Save Event-" + data.Name);
+                    //alert(data.duration+","+data.info+","+data.startdate+","+data.enddate+",");
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: '/Courses/AddCourse2',//'https://localhost:7203/api/Courses/'+data.id+'/',
+                        data: data,
+                        success: function (data) {
+                            //alert("Status-"+data.status);
+                            if (data.status) {
+                                //alert("refresh calendar");
+                                //Refresh the calender
+                                //FetchEventAndRenderCalendar();
+                                
+                            }
+                            //else alert("Else part");
+                            addtoast("Course Added Succesfully");
+                            FetchEventAndRenderCalendar();
+                            $('#myModalSave').modal('hide');
+                        },
+                        error: function () {
+                            alert('Failed Save');
+                        }
+                    })
+                }
+                function SaveEvent(data) {
+                    //alert("In Save Event-" + data.Name);
+                    //alert(data.duration+","+data.info+","+data.startdate+","+data.enddate+",");
+                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: '/Courses/UpdateEnd',//'https://localhost:7203/api/Courses/'+data.id+'/',
+                        data: data,
+                        success: function (data) {
+                            //alert("Status-"+data.status);
+                            if (data.status) {
+                                //alert("refresh calendar");
+                                //Refresh the calender
+                                //FetchEventAndRenderCalendar();
+                                
+                            }
+                            //else alert("Else part");
+                            addtoast("Course Saved Succesfully");
+                            FetchEventAndRenderCalendar();
+                            $('#myModalSave').modal('hide');
+                        },
+                        error: function () {
+                            alert('Failed Save');
+                        }
+                    })
+                }
+            })
+        </script>
+        
+    }
