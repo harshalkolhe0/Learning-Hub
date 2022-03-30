@@ -1,0 +1,66 @@
+﻿@model LearningHubMVC.Models.Course
+@{
+    ViewBag.Title = "Update Course";
+}
+<br />
+<br />
+<div class="row">  
+    <div class="col-md-9">  
+        <form asp-controller="Courses" asp-action="Update">  
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+            @Html.HiddenFor(m=>m.ID)
+            <br/>
+            <div class="form-group">  
+                <label asp-for="Name" class="control-label"></label>  
+                <input asp-for="Name" class="form-control type="text" />  
+                <span asp-validation-for="Name" class="text-danger"></span>  
+            </div> 
+            <br />
+            <label>Start Date</label><br/>
+            @Html.TextBoxFor(m => m.startdate, "{0:dd/MMM/yyyy hh:mm tt}")
+            @Html.ValidationMessageFor(m=>m.startdate)
+            <br/>
+            <br />
+            <label>End Date</label><br/>
+            @Html.TextBoxFor(m => m.enddate, "{0:dd/MMM/yyyy hh:mm tt}")
+            @Html.ValidationMessageFor(m=>m.enddate)
+            <br />
+            <!--
+                <div class="form-group">  
+                    <label asp-for="startdate" class="control-label"></label>  
+                    <input asp-for="startdate" class="form-control"/>  
+                    <span asp-validation-for="startdate" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                    <label asp-for="enddate" class="control-label"></label>  
+                    <input asp-for="enddate" class="form-control" />  
+                    <span asp-validation-for="enddate" class="text-danger"></span>  
+                </div>  
+            -->
+            <br/>
+            <div class="form-group">  
+                <label asp-for="duration" class="control-label"></label>  
+                <input asp-for="duration" class="form-control" type="number"/>  
+                <span asp-validation-for="duration" class="text-danger"></span>  
+            </div>  
+            <br />
+            <div class="form-group">  
+                <label asp-for="info" class="control-label"></label>  
+                <textarea asp-for="info" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="info" class="text-danger"></span>  
+            </div>
+           <br />
+            <div class="form-group">  
+                        <input type="submit" value="Save Course Details" class="btn btn-primary" />  
+            </div>  
+        </form>  
+            </div>  
+        </div>  
+  
+        <div>  
+            <a asp-action="Index">Back to List</a>  
+        </div>  
+  
+        @section Scripts {  
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+        } 
